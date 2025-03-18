@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -186,11 +187,30 @@
                 font-size: 16px;
             }
         }
+        
+        .current-time {
+            margin-bottom: 15px;
+            font-size: 16px;
+            background: #f0f8ff;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        .time-box {
+            font-weight: bold;
+            color: #0066cc;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>📅 Date Time Calculator</h1>
+        
+        <div class="current-time">
+            Current Time: <span class="time-box" id="current-time">--:--:--</span>
+        </div>
+        
         <div class="operation-type">
             <label><input type="radio" name="operation" value="add" checked> Add</label>
             <label><input type="radio" name="operation" value="subtract"> Subtract</label>
@@ -254,9 +274,29 @@
         </div>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let now = new Date();
-            document.getElementById("datetime").value = now.toISOString().slice(0, 16);
+        // Function to update the current time
+        function updateCurrentTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('current-time').textContent = timeString;
+            
+            // Update the datetime input with the current date and time
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            
+            document.getElementById('datetime').value = `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+        
+        // Update time every second
+        document.addEventListener("DOMContentLoaded", function() {
+            // Initial update
+            updateCurrentTime();
+            
+            // Set interval to update every second
+            setInterval(updateCurrentTime, 1000);
         });
         
         function calculateDateTime() {
@@ -331,6 +371,9 @@
             document.getElementById('result-date').innerHTML = "📅 Date<br>--";
             document.getElementById('result-time').innerHTML = "⌚ Time<br>--";
             document.getElementById('entire-duration').textContent = "--";
+            
+            // Reset the date-time input to current time
+            updateCurrentTime();
         }
     </script>
 </body>
