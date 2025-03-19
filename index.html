@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📅 Date Time Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
     <style>
         * {
             box-sizing: border-box;
@@ -16,9 +18,60 @@
             font-family: Arial, sans-serif;
             background-color: #ffff;
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 0;
+        }
+        
+        /* Navigation Bar Styles */
+        .navbar {
+            background-color: #f3f4f6;
+            color: #CB6E17;
+            padding: 15px 20px;
+            display: flex;
+            justify-content:space-evenly;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family:'Dancing Script';
+        }
+        
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-brand svg {
+            margin-right: 8px;
+        }
+        
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .navbar-links a {
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .navbar-links a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .main-content {
+            display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            flex: 1;
             padding: 15px;
         }
       
@@ -79,6 +132,37 @@
             gap: 10px;
             margin-bottom: 15px;
         }
+        footer
+                {
+                    background-color: #F3F4F6;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 15px 20px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    color: #CB6E17;
+                    font-family:'Dancing Script';
+                    font-weight: bold;
+                    margin-top: 40px;
+
+                }
+        .maindata
+            {
+                margin-left: 400px;
+                max-width: 800px;
+                display: flex;
+                align-content: flex-start;
+                flex-direction: column;
+                margin-top:50px;
+                margin-right: 400px;
+
+            }
+    .maindata > h2 
+                {
+                    color: #444444;
+                }
+
+          
         
         @media (min-width: 500px) {
             .time-fields {
@@ -201,78 +285,112 @@
             font-weight: bold;
             color: #0066cc;
         }
+        @media (max-width: 768px) {
+    .maindata {
+        max-width: 95%;
+        margin-top: 30px;
+        
+                margin-left:30px;
+                max-width: 800px;
+                display: flex;
+                align-content: flex-start;
+                flex-direction: column;
+                margin-top:50px;
+                margin-right: 30px;
+
+            
+    }
+}
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📅 Date Time Calculator</h1>
-        
-        <div class="current-time">
-            Current Time: <span class="time-box" id="current-time">--:--:--</span>
+    <nav class="navbar">
+        <div class="navbar-brand">
+                    Date Time Calculator
         </div>
-        
-        <div class="operation-type">
-            <label><input type="radio" name="operation" value="add" checked> Add</label>
-            <label><input type="radio" name="operation" value="subtract"> Subtract</label>
+        <div class="navbar-links">
+            <!-- <a href="#">help</a> -->
+         
         </div>
-        <div class="form-group">
-            <label for="datetime">Start Date & Time:</label>
-            <input type="datetime-local" id="datetime" />
-        </div>
-        <div class="time-fields">
-            <div class="labels">
-                Years
-                <input type="number" id="years" placeholder="- -">
+    </nav>
+    
+    <div class="main-content">
+        <div class="container">
+            <h1>📅 Date Time Calculator</h1>
+            
+            <div class="current-time">
+                Current Time: <span class="time-box" id="current-time">--:--:--</span>
             </div>
-            <div class="labels">
-                Months
-                <input type="number" id="months" placeholder="- -">
+            
+            <div class="operation-type">
+                <label><input type="radio" name="operation" value="add" checked> Add</label>
+                <label><input type="radio" name="operation" value="subtract"> Subtract</label>
             </div>
-            <div class="labels">
-                Weeks
-                <input type="number" id="weeks" placeholder="- -">
+            <div class="form-group">
+                <label for="datetime">Start Date & Time:</label>
+                <input type="datetime-local" id="datetime" />
             </div>
-            <div class="labels">
-                Days
-                <input type="number" id="days" placeholder="- -">
+            <div class="time-fields">
+                <div class="labels">
+                    Years
+                    <input type="number" id="years" placeholder="- -">
+                </div>
+                <div class="labels">
+                    Months
+                    <input type="number" id="months" placeholder="- -">
+                </div>
+                <div class="labels">
+                    Weeks
+                    <input type="number" id="weeks" placeholder="- -">
+                </div>
+                <div class="labels">
+                    Days
+                    <input type="number" id="days" placeholder="- -">
+                </div>
+                <div class="labels">
+                    Hours
+                    <input type="number" id="hours" placeholder="- -">
+                </div>
+                <div class="labels">
+                    Minutes
+                    <input type="number" id="minutes" placeholder="- -">
+                </div>
+                <div class="labels">
+                    Seconds
+                    <input type="number" id="seconds" placeholder="- -">
+                </div>
+                <div class="labels">
+                    Milliseconds
+                    <input type="number" id="milliseconds" placeholder="- -">
+                </div>
             </div>
-            <div class="labels">
-                Hours
-                <input type="number" id="hours" placeholder="- -">
+            <div class="buttons">
+                <button class="calculate-btn" onclick="calculateDateTime()">Calculate</button>
+                <button class="clear-btn" onclick="clearFields()">Clear</button>
             </div>
-            <div class="labels">
-                Minutes
-                <input type="number" id="minutes" placeholder="- -">
+            <div class="result-container">
+                <div class="result-box" id="result-date">📅 Date<br>--</div>
+                <div class="result-box" id="result-time">⌚ Time<br>--</div>
             </div>
-            <div class="labels">
-                Seconds
-                <input type="number" id="seconds" placeholder="- -">
+            
+            <div class="entire-duration-container">
+                <div class="entire-duration-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                    </svg>
+                    Entire Duration (Years, Months, Days)
+                </div>
+                <div class="entire-duration-value" id="entire-duration">--</div>
             </div>
-            <div class="labels">
-                Milliseconds
-                <input type="number" id="milliseconds" placeholder="- -">
-            </div>
-        </div>
-        <div class="buttons">
-            <button class="calculate-btn" onclick="calculateDateTime()">Calculate</button>
-            <button class="clear-btn" onclick="clearFields()">Clear</button>
-        </div>
-        <div class="result-container">
-            <div class="result-box" id="result-date">📅 Date<br>--</div>
-            <div class="result-box" id="result-time">⌚ Time<br>--</div>
-        </div>
-        
-        <div class="entire-duration-container">
-            <div class="entire-duration-title">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                </svg>
-                Entire Duration (Years, Months, Days)
-            </div>
-            <div class="entire-duration-value" id="entire-duration">--</div>
         </div>
     </div>
+    <div class="maindata">
+        <h2>Date Time Calculator</h2>
+        <p>The Date Time Calculator is a powerful tool designed to perform various date and time calculations with ease. Whether you need to calculate the difference between two dates, add or subtract days, months, or years from a specific date, or find out the exact time elapsed between events, this tool provides accurate and instant results. </p>
+       
+    </div>
+    <footer>© 2022 - 2025 Date Time Calculator</footer>
     <script>
         // Function to update the current time
         function updateCurrentTime() {
